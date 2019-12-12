@@ -25,7 +25,6 @@
 #define PINNUMBER ""
 
 // initialize the library instance
-// include a 'true' parameter for debug enabled
 GSM gsmAccess;
 GSM_SMS sms;
 
@@ -38,10 +37,9 @@ char txtMsg[200]= "Movement has been detected! You have a visitor";
 int ledPin = 8;                   // choose the pin for the LED
 int pinSpeaker = 4;               // Set up a speaker on a PWM pin (digital 9, 10, or 11)
   
-
 void setup() {
   pinMode(ledPin, OUTPUT);        // declare LED as output
-  pinMode(pinSpeaker, OUTPUT);
+  pinMode(pinSpeaker, OUTPUT);    // declare buzzer as output
   
   Serial.begin(9600);
 
@@ -69,7 +67,6 @@ void setup() {
   delay(20000);
 }
 
-
 void loop() {
   int inputPin = analogRead(A5);      // Reading the PIR Motion sensor value
   Serial.println(inputPin);
@@ -91,6 +88,7 @@ void loop() {
   }
 }
 
+// Code from Md. Jubayer Rahma
 
 // duration in mSecs, frequency in hertz
 void playTone(long duration, int freq) {
